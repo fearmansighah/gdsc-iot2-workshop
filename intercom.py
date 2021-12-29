@@ -12,6 +12,7 @@ def intercom_pub(topic, msg, broker, port, client):
 
 def on_message(client, userdata, msg):
     request = str(msg.payload.decode("utf-8"))
+    
 
     if request == 'y':
         print('door unlocked!')

@@ -14,7 +14,7 @@ def on_message(client, userdata, msg):
     if request == '1':
         grant = str(input('intercom asking for door access, grant? (y/n): '))
 
-        roomNumber = '2'
+        roomNumber = '1'
         room_pub(
                 topic=f'gdsc_iot2/{roomNumber}',
                 msg=grant,

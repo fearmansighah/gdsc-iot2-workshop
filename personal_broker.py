@@ -1,1 +1,1 @@
-broker = 'brokername'
+broker = 'mqtt.eclipseprojects.io'
