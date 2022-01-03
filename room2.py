@@ -25,23 +25,16 @@ def on_message(client, userdata, msg):
         pass
 
 
-def room_listen(client, topic, broker, port):
-    
+def room_listen(client, topic, broker, port):    
     client.connect(broker, port)
-    print('connected to broker')
-    
-    client.loop_start()
+    print(f'connected to: {broker}')
 
     client.subscribe(topic)
     print(f'subscribed to: {topic}')
 
     client.on_message = on_message
 
-    sleep(30)
-
-    client.unsubscribe(topic)
-    client.disconnect()
-    print('disconnecting from broker...')
+    client.loop_forever() # to read from receiver buffer
 
 
 def main():
@@ -50,14 +43,14 @@ def main():
     
     
     roomNumber = '2'
-    room2=mqtt.Client(f'room {roomNumber}')
-    room2.username_pw_set(username="edwin", password="ids_2021")
-
+    room1=mqtt.Client(f'room {roomNumber}')
+    room1.username_pw_set(username="edwin", password="ids_2021")
+   
     room_listen(
                 topic=f'gdsc_iot2/{roomNumber}',
                 broker=mqttBroker,
                 port=1883,
-                client=room2
+                client=room1
                 )
     
 
