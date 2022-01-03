@@ -38,7 +38,6 @@ def room_listen(client, topic, broker, port):
 
 
 def main():
-    #mqttBroker = "mqtt.eclipseprojects.io"
     mqttBroker = broker
     
     

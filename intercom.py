@@ -31,7 +31,7 @@ def intercom_listen(topic, client):
     client.subscribe(topic)
     print(f'subscribed to: {topic}')
 
-    client.on_message = on_message
+    client.on_message = on_message # not synchronous, we just activated it
     sleep(10) # whenever a callback is received, wait 10 seconds before stopping the loop
 
     client.loop_stop()
@@ -39,8 +39,6 @@ def intercom_listen(topic, client):
 
 
 def main():
-
-    #mqttBroker = "mqtt.eclipseprojects.io"
     mqttBroker = broker
     intercom=mqtt.Client('intercom')
     intercom.username_pw_set(username="edwin", password="ids_2021")
